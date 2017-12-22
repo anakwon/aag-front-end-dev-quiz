@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AAG Front End Dev Quiz</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet">
+</head>
+<style>
+	.main-title{
+		color:#000000;
+		font-size:1.8em;
+		margin-top:2em;
+		text-align:center;
+	}
+	.sectionLine{
+		background-color:#ecf0f1;
+		vertical-align: middle;
+		text-align:center;
+		padding:10px;
+		margin:0;
+	}
+	.sectionLineText{
+		margin:0;
+	}
+	.dropdown-btn{
+    color: black;
+    background-color: #FFF;
+    border-color: #868e96;
+	}
+	input, textarea, select, button {
+	  width : 350px;
+	  height: 37px;
+	  margin: 0;
+
+	  -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+	     -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+	          box-sizing: border-box;
+	}
+	.form-control{
+		width:350px;
+		display:inline;
+	}
+	.sectionBox{
+		border: 2px solid #ecf0f1;
+		border-top: 3px solid #16ad0e;
+		margin-top:20px;
+	}
+	.submitButton{
+		background-color:#16ad0e;
+		color:#FFF;
+	}
+	.submitButton:hover{
+		background-color:#FFF;
+		border: 1px solid #16ad0e;
+		color:#000;
+	}
+	.buttonStyle{
+		margin-top:20px;
+	}
+	.footer{
+		font-size:8px;
+	}
+
+	#step2, #step3 {
+		display: none;
+	}
+
+</style>
+<body>
+	<div class="container">
+		<div class="col-sm-10 offset-sm-1">
+			<p class="main-title">Convert Your Home Equity Into <strong>Tax-Free Cash</strong> With</br> a Reverse Mortage Loan</p>
+		</div>
+		<div class="col-sm-12 sectionLine">
+			<p class="sectionLineText">Get Your <strong>Free Reverse Mortgage Info Kit</strong> Now!</p>
+		</div>
+	</div>
+
+	<div id="step1">
+	<form id="sectionForm" onsubmit="return next(1)"> 
+	<div class="container">
+		<div class="sectionBox col-sm-6 offset-sm-3">
+			<div class="col-sm-12" style="text-align:center; margin-top:20px;">
+				<label for="dropdown">What's the estimated property value?</label>
+				<select name="dropdown" id="home-value"> 
+				    <option value="0">Select home value</option>
+					<!-- Dynamically created home value options will be added here -->
+				</select>
+			</div>
+
+			<div class="col-sm-12" style="text-align:center; margin-top:10px;">
+				<label for="dropdown">What's your mortage balance?</label>
+				<select name="dropdown" id="mortgage">
+					<option value="0">Select mortgage balance</option>
+					<!-- Dynamically created mortgage balance options will be added here -->
+				</select>
+			</div>
+
+			<div class="col-sm-12" style="text-align:center; margin-top:10px; margin-bottom:30px;">
+				<label for="dropdown">What's the zip code for your property?</label>
+				<label class="col-sm-2" for="zipcode"></label>
+				<input type="text" class="form-control input_style" id="zipcode" placeholder="Enter property zip" required>
+			</div>
+
+		</div>
+		<div class="col-sm-12 text-center buttonStyle">
+			<button class="btn submitButton">NEXT <span class="push-right" style="text-align:right">></span></button>
+			<div id="errors-1"></div>
+		</div>
+	</div>
+</form>
+</div><!-- End of Step1 -->
+
+<!-- Step 2 -->
+<div id="step2">
+	<form onsubmit="return next(2)">
+	<div class="container">
+		<div class="sectionBox col-sm-6 offset-sm-3">
+			<div class="col-sm-12" style="text-align:center; margin-top:20px;">
+				<label for="dropdown">What is the age of the homeowner on the title?</label>
+				<select name="dropdown" id="age">
+				    <option value="0">Please select age</option>
+				    <!-- Dynamically created age options will be added here -->
+				</select>
+			</div>
+
+			
+
+			<div class="col-sm-12" style="text-align:center; margin-top:10px;">
+				<label for="dropdown">What is your First and Last Name?</label>
+				<label class="col-sm-2" for="full-name"></label>
+				<input type="text" class="form-control input_style" id="full-name" name="fullName" placeholder="Enter First and Last Name" required>
+			</div>
+
+			<div class="col-sm-12" style="text-align:center; margin-bottom:30px;">
+				<label for="dropdown">What is the property street address?</label>
+				<label class="col-sm-2" for="address"></label>
+				<input type="text" class="form-control input_style" id="address" name="address" placeholder="Enter your street address" required>
+			</div>
+
+		</div>
+		<div class="col-sm-12 text-center buttonStyle">
+			<button type="submit" class="btn submitButton">NEXT <span class="push-right" style="text-align:right">></span></button>
+			<div id="errors-2"></div>
+		</div>
+	</div>
+	</form>
+</div> <!-- End of Step 2 -->
+
+<!-- Step 3 -->
+<div id="step3" class="collapse">
+	<div class="container">
+		<div class="sectionBox col-sm-6 offset-sm-3">
+			<div class="col-sm-12" style="text-align:center; margin-top:10px; margin-bottom:30px;">
+				<label for="dropdown">What is your phone number?</label>
+				<label style="font-size:10px;">Your phone number will help us make sure you live in the United States</label>
+				<label class="col-sm-2" for="phoneNumber"></label>
+				<input type="text" class="form-control input_style" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+			</div>
+		</div>
+		<div class="col-sm-12 text-center buttonStyle">
+			<button type="button" class="btn submitButton">SUBMIT <span class="push-right" style="text-align:right">></span></button>
+		</div>
+	</div>
+
+</div> <!-- End of Step 3 -->
+
+<hr>
+
+	<div class="col-sm-8 offset-sm-2 text-center">
+		<p class="footer">&copy;2017 American Advisors Group, All Rights Reserved NMLS# 9392 3800 W. Chapman Avenue. Orange, CA 92868</p>
+		<p class="footer">By providing the requested information and clicking "Submit", I provide my signature expressly consenting to contact from American Advisors Group or its subsidiaries, affiliates, or agents at the number I provided regarding products or services via live, automated or prerecorded telephone call, text message, or email. I understand that my telephone company may impose charges on me for these contacts, and I am not required to enter into this agreement as a condition of purchasing property, goods, or services. I understand that I can revoke this consent at any time. To speak with someone at American Advisors Group, please call 1-800-943-7925. Legal Information | Privacy Policy  </p>
+	</div>
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+
+	<script>
+		var userData = {};
+		createStepOneForm();
+
+		function next(form) {
+
+			switch(form){
+				case 1:
+					if(collectValidateFormOneValues()){
+						$('#step1').hide();
+						$('#step2').show();
+						createStepTwoForm();
+					};
+					break;
+				case 2:
+					if(collectValidateFormTwoValues()){
+						$('#step2').hide();
+						$('#step3').show();
+					}
+					break;
+			}
+			
+			console.log('User Data at step' + form + ':', userData);
+
+			return false;
+		}
+
+		function collectValidateFormOneValues(sectionId){
+			var inputs = {
+				home: $('#home-value'),
+				mortgage: $('#mortgage'),
+				zipcode: $('#zipcode')
+			}
+			var $errors1 = $('#errors-1');
+			var errors = [];
+
+			$errors1.html('');
+
+			if(inputs.home.val() === '0'){
+				errors.push(createError('No home value selected'));
+			}
+
+			if(inputs.mortgage.val() === '0'){
+				errors.push(createError('No mortgage amount selected'));
+			}
+
+			var zip = parseInt(inputs.zipcode.val()).toString();
+
+			if(isNaN(zip) || zip.length !== 5){
+				errors.push(createError('Invalid zipcode'));
+			}
+
+			if(errors.length){
+				$errors1.append(errors);
+				return false;
+			}
+
+			for(key in inputs){
+				userData[key] = inputs[key].val();
+			}
+			return true;
+		}
+
+		function collectValidateFormTwoValues(){
+			var inputs = {
+				age: $('#age'),
+				name: $('#full-name'),
+				address: $('#address')
+			};
+
+			var $errors2 = $('#errors-2');
+			var errors = [];
+
+			$errors2.html('');
+
+			if(inputs.age.val() === '0'){
+				errors.push(createError('Please select an age'));
+			}
+
+			var name = inputs.name.val();
+
+			if(name === '' || !/[a-zA-z]+[ ]+[a-zA-Z]+/.test(name)){
+				errors.push(createError('Please enter your full name'));
+			}
+
+			if(inputs.address.val() === ''){
+				errors.push(createError('Please enter your address'));
+			}
+
+			if(errors.length){
+				$errors2.append(errors);
+				return false;
+			}
+
+			for(key in inputs){
+				userData[key] = inputs[key].val();
+			}
+			return true;
+		}
+
+		function createError(text){
+			return $('<p>', { 
+						class: 'text-danger',
+						text: text
+					});
+		}
+
+		function createStepOneForm(){
+			var startingAmount = 50;
+			var maxAmount = 950;
+			var increment = 50;
+			var optionsHomeValue = [];
+			var optionsMortgage = [];
+
+			for(var amount = startingAmount; amount < maxAmount; amount += increment){
+				var text = '$' + amount + 'k - $' + (amount + increment) + 'k';
+				
+				optionsHomeValue.push($('<option>', {
+						value: text,
+						text: text
+					})
+				);
+				optionsMortgage.push($('<option>', {
+						value: text,
+						text: text
+					})
+				);
+			}
+			$('#home-value').append(optionsHomeValue);
+			$('#mortgage').append(optionsMortgage);
+		}
+
+		function createStepTwoForm(){
+			var startingAge = 62;
+			var maxAge = 99;
+			var increment = 1;
+			var options = [];
+
+			for(var age = startingAge; age <= maxAge; age += increment){
+				options.push($('<option>', {
+					value: age,
+					text: age
+				}));
+			}
+
+			$('#age').append(options);
+		}
+	</script>
+	</body>
+</html>
